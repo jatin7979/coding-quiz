@@ -1,147 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-image: url('your_background_image.jpg'); /* Replace 'your_background_image.jpg' with the path to your image */
-      background-size: cover;
-      background-position: center;
-      text-align: center;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Difficulty Selection</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('g4.webp'); /* Replace 'background-image.jpg' with your actual image URL */
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
 
-    #quiz-container {
-      width: 60%;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      transition: background-color 0.3s;
-    }
+        .container {
+            background-color: rgba(255, 255, 255, 0.882); /* Adjust the alpha channel for transparency */
+            padding: 110px;
+            border-radius: 40px;
+            text-align: center;
+        }
 
-    .question {
-      margin-bottom: 20px;
-    }
-
-    #options-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .option {
-      margin: 8px;
-      padding: 10px;
-      cursor: pointer;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      transition: background-color 0.3s;
-    }
-
-    #result {
-      margin-top: 20px;
-    }
-
-    .correct {
-      background-color: #8cff8c;
-    }
-  </style>
-  <script>
-    const questions = [
-      {
-        question: "What does the sizeof operator in C return?",
-        options: ["Size of a variable or data type", "Address of a variable", "Value of a variable", "Type of a variable"],
-        correctAnswer: "Size of a variable or data type"
-      },
-      {
-        question: "In C, what is the purpose of the scanf function?",
-        options: ["Print formatted output to the console", "Read input from the user", "Allocate memory for a variable", "Declare a constant variable"],
-        correctAnswer: "Read input from the user"
-      },
-      {
-        question: "What is the syntax for a single-line comment in C?",
-        options: ["/* comment */", "// comment", "-- comment", "%% comment %%"],
-        correctAnswer: "// comment"
-      },
-      {
-        question: "Which keyword is used to define a constant in C?",
-        options: ["const", "constant", "final", "define"],
-        correctAnswer: "const"
-      },
-      {
-        question: "What is the purpose of the return statement in a C function?",
-        options: ["Exit the program", "Print a value to the console", " Return a value from the function", "Stop the execution of the current loop"],
-        correctAnswer: "Return a value from the function"
-      }
-    ];
-
-    let currentQuestion = 0;
-    let score = 0;
-
-    function checkAnswer(selectedOption) {
-      const correctAnswer = questions[currentQuestion].correctAnswer;
-      const quizContainer = document.getElementById('quiz-container');
-
-      if (selectedOption === correctAnswer) {
-        quizContainer.classList.add('correct');
-        document.getElementById('result').innerText = 'Correct!';
-        score++;
-      } else {
-        document.getElementById('result').innerText = 'Incorrect, try again!';
-      }
-
-      currentQuestion++;
-
-      if (currentQuestion < questions.length) {
-        setTimeout(() => {
-          quizContainer.classList.remove('correct');
-          loadQuestion();
-        }, 1000);
-      } else {
-        showResult();
-      }
-    }
-
-    function loadQuestion() {
-      const currentQuestionData = questions[currentQuestion];
-      document.getElementById('question').innerText = currentQuestionData.question;
-      const optionsContainer = document.getElementById('options-container');
-      optionsContainer.innerHTML = '';
-
-      currentQuestionData.options.forEach((option) => {
-        const optionElement = document.createElement('div');
-        optionElement.classList.add('option');
-        optionElement.innerText = option;
-        optionElement.onclick = () => checkAnswer(option);
-        optionsContainer.appendChild(optionElement);
-      });
-
-      document.getElementById('result').innerText = '';
-    }
-
-    function showResult() {
-      const quizContainer = document.getElementById('quiz-container');
-      quizContainer.innerHTML = `
-        <h2>Quiz Completed!</h2>
-        <p>Your score: ${score}/${questions.length}</p>
-      `;
-    }
-
-    window.onload = loadQuestion;
-  </script>
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 30px 0;
+            cursor: pointer;
+            border: none;
+            background-color: #3498db;
+            color: #fff;
+            border-radius: 5px;
+        }
+        button a {
+            text-decoration: none; /* Remove underline from anchor elements inside buttons */
+            color: inherit; /* Inherit color from parent button */
+        }
+        .back-button {
+            background-color: #e74c3c; /* Different background color for the Back button */
+        }
+        .pop {
+            background-color: #e74c3c;
+        }
+    </style>
 </head>
 <body>
-  <div id="quiz-container">
-    <div class="question" id="question"></div>
-    <div id="options-container"></div>
-    <div id="result"></div>
-  </div>
+    <div class="container">
+        <h2>Select Difficulty</h2>
+        <button onclick="selectDifficulty('easy')"><a href="clan1.html">Easy</a></button>
+        <button onclick="selectDifficulty('medium')"><a href="clan2.html">Medium</a></button>
+        <button onclick="selectDifficulty('hard')"><a href="clan3.html">Hard</a></button>
+        <button class="pop"><a href="file:///C:/Users/Ayush/OneDrive/Desktop/Project%202/New2/Front.html">Back</button>
+    </div>
+
+    <script>
+        function selectDifficulty(difficulty) {
+            alert('Selected difficulty: ' + difficulty);
+            // You can add more logic here based on the selected difficulty
+        }
+    </script>
 </body>
 </html>

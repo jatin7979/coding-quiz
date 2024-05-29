@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Quiz</title>
+    <style>
+        .container {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            text-align: center;
+        }
+        body {
+            background-image: url('e1.jpg'); /* Replace 'background.jpg' with your image file */
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>C language Quiz</h1>
+        <h3><p>Answer the following C language questions:</p></h3>
+        
+        <div id="questions">
+            <div class="question" id="question1">
+                <p>Question 1: Study the following statement</p>
+                <pre><code><h3>
+#include <stdio.h>  
+ int main()  
+    {  
+           int *ptr, a = 10;  
+              ptr = &a;  
+              *ptr += 1;  
+              printf("%d,%d/n", *ptr, a);  
+            }  
+                </h3>
+                </code></pre>
+                <input type="text" id="answer1" name="answer1" placeholder="Enter your answer"><br>
+            </div>
+            
+            <div class="question" id="question2">
+                <p>Question 2: What will be the output of this program?</p>
+                <pre><code><h3>
+                    int main()      
+                    {      
+                    int a=10, b=20;        
+                    printf("a=%d b=%d",a,b);        
+                    a=a+b;      
+                    b=a-b;      
+                    a=a-b;      
+                    printf("a=%d b=%d",a,b);      
+                    return 0;    
+                    }     
+                </h3>
+                </code></pre>
+                <input type="text" id="answer2" name="answer2" placeholder="Enter your answer"><br>
+            </div>
+            
+            <div class="question" id="question3">
+                <p>Question 3: What will be the output of the program?</p>
+                <pre><code><h3>
+                    main()  
+                    {     
+                       char *s = "Hello,"  
+                       "World!";  
+                       printf("%s", s);  
+                    }   
+                </h3>
+                </code></pre>
+                <input type="text" id="answer3" name="answer3" placeholder="Enter your answer"><br>
+            </div>
+        </div>
+        <br>
+        <button onclick="checkAnswers()">Submit</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            var answers = {
+                answer1: document.getElementById('answer1').value.trim(),
+                answer2: document.getElementById('answer2').value.trim(),
+                answer3: document.getElementById('answer3').value.trim()
+            };
+
+            var correctAnswers = {
+                answer1: '11,11',
+                answer2: '20,10',
+                answer3: 'Hello,World!'
+            };
+
+            var correctCount = 0;
+
+            for (var key in answers) {
+                if (answers[key] === correctAnswers[key]) {
+                    correctCount++;
+                }
+            }
+
+            var result = document.getElementById('result');
+            if (correctCount === Object.keys(correctAnswers).length) {
+                result.innerText = "Congratulations! All answers are correct.";
+            } else {
+                result.innerText = "Incorrect answers. Please review and try again.";
+            }
+        }
+    </script>
+</body>
+</html>

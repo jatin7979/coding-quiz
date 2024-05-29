@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python Quiz</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: url('g4.webp');
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        width: 80%;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #6fffe0;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        margin-left: 500px;
+        margin-right: 500px;
+    }
+    .question-container {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    .question {
+        margin-bottom: 10px;
+    }
+    #timer {
+        float: right;
+        font-weight: bold;
+    }
+
+    /* Media query for phone */
+    @media (max-width: 768px) {
+        .container {
+            width: 90%;
+            margin: 20px;
+            margin-left: 0;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1><center>Python Quiz</center></h1>
+    <div id="quiz"></div>
+    <div id="result" style="display: none;">
+        <h2>Quiz Results</h2>
+        <p>Correct Answers: <span id="correctCount"></span></p>
+        <p>Wrong Answers: <span id="wrongCount"></span></p>
+        <p>Total Questions Attempted: <span id="attemptedCount"></span></p>
+    </div>
+</div>
+
+<script>
+    var questions = [
+        {
+            question: "What is the maximum possible length of an identifier?",
+            options: ["A. 16", "B. 32", "C. 64", "D. None"],
+            answer: "D"
+        },
+        {
+            question: "In which language is Python written?",
+            options: ["A. English", "B. PHP", "C. C", "D. All of the above"],
+            answer: "C"
+        },
+        {
+            question: "What does the following Python code print? \n\n\n print(2 + 2 * 2)",
+            options: ["A. 6", "B. 8", "C. 10", "D. 16"],
+            answer: "C"
+        },
+        {
+            question: "What is the output of the following code? x = 5\nprint(x > 3 and x < 10)",
+            options: ["A. True", "B. False", "C. Error", "D. None"],
+            answer: "A"
+        },
+        {
+            question: "Which of the following data types is mutable in Python?",
+            options: ["A. int", "B. float", "C. str", "D. list"],
+            answer: "D"
+        }
+    ];
+
+    var currentQuestion = 0;
+    var correctCount = 0;
+    var wrongCount = 0;
+    var attemptedCount = 0;
+    var timer;
+
+    function startQuiz() {
+        displayQuestion();
+        timer = setInterval(displayNextQuestion, 15000);
+    }
+
+    function displayQuestion() {
+    var quizDiv = document.getElementById("quiz");
+    var questionObj = questions[currentQuestion];
+    quizDiv.innerHTML = '<div class="question">' + questionObj.question + '</div>';
+    questionObj.options.forEach(function(option) {
+        quizDiv.innerHTML += '<div><input type="radio" name="answer" value="' + option[0] + '"> ' + option + '</div>';
+    });
+    quizDiv.innerHTML += '<br><button onclick="checkAnswer()">Submit</button>';
+    document.getElementById("timer").innerText = "15";
+    countdown(15);
+}
+
+
+    function displayNextQuestion() {
+        clearInterval(timer);
+        wrongCount++;
+        attemptedCount++;
+        currentQuestion++;
+        if (currentQuestion < questions.length) {
+            displayQuestion();
+            timer = setInterval(displayNextQuestion, 15000);
+        } else {
+            showResult();
+        }
+    }
+
+    function countdown(seconds) {
+        var timeLeft = seconds;
+        var timerElement = document.getElementById("timer");
+        var timerInterval = setInterval(function() {
+            timeLeft--;
+            timerElement.innerText = timeLeft;
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+            }
+        }, 1000);
+    }
+
+    function checkAnswer() {
+        clearInterval(timer);
+        attemptedCount++;
+        var selectedAnswer = document.querySelector('input[name="answer"]:checked');
+        if (selectedAnswer) {
+            if (selectedAnswer.value === questions[currentQuestion].answer) {
+                correctCount++;
+            } else {
+                wrongCount++;
+            }
+            displayNextQuestion();
+        }
+    }
+
+    function showResult() {
+    var totalQuestions = questions.length;
+    var accuracy = (correctCount / totalQuestions) * 100;
+    var level;
+
+    if (accuracy >= 80) {
+        level = "Expert";
+    } else if (accuracy >= 60) {
+        level = "Intermediate";
+    } else if (accuracy >= 40) {
+        level = "Beginner";
+    } else {
+        level = "Novice";
+    }
+
+    document.getElementById("quiz").style.display = "none";
+    document.getElementById("result").style.display = "block";
+    document.getElementById("correctCount").innerText = correctCount;
+    document.getElementById("wrongCount").innerText = wrongCount;
+    document.getElementById("attemptedCount").innerText = attemptedCount;
+    document.getElementById("level").innerText = level;
+}
+
+    window.onload = startQuiz;
+</script>
+</body>
+</html>
