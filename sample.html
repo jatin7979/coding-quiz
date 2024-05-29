@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coding Quiz Blog</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background-image: url('background.jpg'); /* Replace with your background image URL */
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      background-color: #333;
+    }
+
+    article {
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Coding Quiz Blog</h1>
+    <p>Test your coding knowledge with these quiz questions.</p>
+  </header>
+
+  <article>
+    <h2>Question 1</h2>
+    <p>What is the capital of France?</p>
+
+    <img src="q2.png" alt="Paris Image"> <!-- Replace with your image URL -->
+    <p>Paris is a beautiful city...</p>
+
+    <p>Options:</p>
+    <ul>
+      <li><button onclick="checkAnswer('Paris')">A. Paris</button></li>
+      <li><button onclick="checkAnswer('Berlin')">B. Berlin</button></li>
+      <li><button onclick="checkAnswer('Madrid')">C. Madrid</button></li>
+      <li><button onclick="checkAnswer('Rome')">D. Rome</button></li>
+    </ul>
+
+    <p id="result"></p>
+  </article>
+
+  <script>
+    function checkAnswer(selectedAnswer) {
+      var correctAnswer = "Paris";
+
+      if (selectedAnswer === correctAnswer) {
+        document.getElementById("result").innerText = "Correct!";
+      } else {
+        document.getElementById("result").innerText = "Incorrect. The correct answer is: " + correctAnswer;
+      }
+    }
+  </script>
+
+</body>
+</html>

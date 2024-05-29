@@ -1,0 +1,61 @@
+body {
+    background-image: url('p3.jpg');
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.login-container {
+    background-color: #27c3ea;
+    padding: 28px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 0px rgb(113, 30, 30);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.login-container input {
+    margin: 10px;
+    padding: 18px;
+    width: 200px;
+    font-size: 16px;
+}
+
+.login-container button {
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.error-message {
+    color: red;
+}
+
+.quiz-container {
+    display: none;
+    background-color: #36cdff;
+    padding: 50px;
+    border-radius: 330px;
+    box-shadow: 0px 0px 10px 0px rgba(11, 3, 3, 0.1);
+    text-align: center;
+}
+
+.options-container {
+    margin-top: 20px;
+}
+
+.next-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.results-container {
+    font-weight: bold;
+}

@@ -1,0 +1,69 @@
+body {
+    background-image: url('quiz.jpg'); /* Replace 'background.jpg' with your actual image file */
+    background-size: cover;
+    background-position: center;
+    /* display: flex; */
+    /* justify-content: center; */
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: rgb(23, 21, 21);
+    font-family: Arial, sans-serif;
+}
+
+.login-container {
+    /* display: flexbox; */
+    
+    /* text-align: center; */
+    margin-right: 800px;
+    padding-top: 100px;
+    position: relative;
+    top: 232px;
+    left: 160px;
+    background-color: rgba(45, 99, 110, 0.9);
+    /* padding: 101px; */
+    border-radius: 20px;
+    width: 392px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    
+}
+
+.login{
+    /* padding-top:20px; */
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    top: -65px;
+    text-align: center;
+}
+
+.user{
+    /* text-size-adjust: 10px; */
+    padding-left:50px;
+}
+
+.pass{
+    padding-left: 52px
+}
+
+#password{
+    padding: -3px;
+}
+
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 162px;
+}
+
+button:hover {
+    background-color: #45a049;
+}

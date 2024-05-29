@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programming Language Selector</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+
+    .language-box {
+      background-size: cover;
+      background-position: center;
+      border-radius: 8px;
+      margin: 10px;
+      overflow: hidden;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+
+    .python {
+      background-image: url('python.jpg'); /* Replace with your Python background image URL */
+      background-color: #306998;
+    }
+
+    .java {
+      background-image: url('java.jpg'); /* Replace with your Java background image URL */
+      background-color: #5382a1;
+    }
+
+    .cpp {
+      background-image: url('cpp.jpg'); /* Replace with your C++ background image URL */
+      background-color: #5c5c5c;
+    }
+
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    button {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Select a Programming Language</h1>
+
+  <div class="button-container">
+    <div class="language-box python">
+      <button onclick="showAlert('Python')">Python</button>
+    </div>
+    <div class="language-box java">
+      <button onclick="showAlert('Java')">Java</button>
+    </div>
+    <div class="language-box cpp">
+      <button onclick="showAlert('C++')">C++</button>
+    </div>
+  </div>
+
+  <script>
+    function showAlert(language) {
+      alert('You selected ' + language + '.');
+    }
+  </script>
+
+</body>
+</html>
